@@ -1,0 +1,50 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    background: -moz-linear-gradient(left, rgba(20,118,156,1) 0%, rgba(20,118,156,0.99) 15%, rgba(188,224,238,0.95) 100%);
+}
+.container-fluid{
+    max-width: 1140px;
+    padding: 0;
+}
+.logo-company{
+    display: flex;
+    justify-content: center;
+}
+a .logo{
+    max-width: 120px;
+}
+main #register-form{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(225, 225, 225, 0.5);
+    border: 1px solid #FFA113;
+    border-radius: 20px;
+}
+.main-title{
+    display: flex;
+    justify-content: center;
+}
+.column{
+    margin: 0 auto;
+}
+.btn{
+    width: 100%;
+}
+.btn-social-network{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+.btn-social-network hr{
+    width: 30%;
+}
+.btn-social-network a{
+    width: 15%;
+    max-width: 40px;
+}
+main section p{
+    margin-top: 25px;
+}
