@@ -18,11 +18,13 @@ class CartsController extends Controller
         }
         $Products = Auth::user()->cart;
         $totalPrice = 0;
-    
+
+
         foreach ($Products as $Product) {
             $totalPrice += $Product->price * $Product->pivot->quantity;
+
         }
-    
+
         return view('/cart', compact('Products', 'totalPrice'));
     }
 
@@ -54,32 +56,33 @@ class CartsController extends Controller
 
         $Cart = Cart::where([['user_id','=', Auth::user()->id], ['product_id', '=', $request['product_id']]])->get()->pop();
 
-        
+
         $Cart->quantity = $request['quantity'];
-        
+
         $Cart->save();
 
         return redirect('/cart');
     }
 
+
     public function removeProduct(Request $request){
 
-        $Cart = Cart::where([['user_id','=', Auth::user()->id], ['product_id', '=', $request['product_id']]])->get()->pop();
+       $Cart = Cart::where([['user_id','=', Auth::user()->id], ['product_id', '=', $request['product_id']]])->get()->pop();
 
-        $Cart->delete();
+       $Cart->delete();
 
-        return redirect('/cart');
-    }
+       return redirect('/cart');
+   }
 
     public function checkout(Request $request){
         $Products = Auth::user()->cart;
-        
+
         foreach ($Products as $Product) {
-            if($Product->pivot->quantity > $Product->stock){  // Me fijo que todavia haya el stock deseado por el usuario ya que 
+            if($Product->pivot->quantity > $Product->stock){  // Me fijo que todavia haya el stock deseado por el usuario ya que
                 $stockErrors[] = $Product->name;              // puede cambiar mientras tiene el producto en el carrito
             }
         }
-        
+
         if (isset($stockErrors)){
             return redirect('/cart')->withErrors($stockErrors); //Avisa que ya no hay stock suficiente
         }
@@ -102,12 +105,12 @@ class CartsController extends Controller
         }
 
 
-        
+
         $Cart = Cart::where('user_id','=', Auth::user()->id)->get();
         foreach ($Cart as $CartItem) {
             $CartItem->delete(); // Borrar los productos del carrito
         }
 
-        return redirect('/');
+        return redirect('/checkout');
     }
 }
