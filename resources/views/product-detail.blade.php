@@ -39,7 +39,7 @@
 					</a>
                         <ol class="carousel-indicators">
                             <li data-target="#carousel-example-1" data-slide-to="0" class="active">
-                                <img class="d-block w-100 img-fluid" src="/product_img/{{$Product->image}}}}" alt="" />
+                                <img class="d-block w-100 img-fluid" src="/product_img/{{$Product->image}}" alt="" />
                             </li>
                             <li data-target="#carousel-example-1" data-slide-to="1">
                                 <img class="d-block w-100 img-fluid" src="/product_img/{{$Product->image}}" alt="" />

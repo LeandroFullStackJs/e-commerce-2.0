@@ -31,121 +31,60 @@
                                 <button type="submit"> <i class="fa fa-search"></i> </button>
                             </form>
                         </div>
+                        <div class="title-left">
+                            <h3>Categories</h3>
+                        </div>
+
+
+
                         <div class="filter-sidebar-left">
-                            <div class="title-left">
-                                <h3>Categories</h3>
-                            </div>
+
+@foreach ($Categories as $Category)
                             <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men" data-children=".sub-men">
+
+
                                 <div class="list-group-collapse sub-men">
-                                    <a class="list-group-item list-group-item-action" href="#sub-men1" data-toggle="collapse" aria-expanded="true" aria-controls="sub-men1">Clothing <small class="text-muted">(100)</small>
-								</a>
+
+                                    <a class="list-group-item list-group-item-action" href="#sub-men1" data-toggle="collapse" aria-expanded="true" aria-controls="sub-men1">{{$Category->name}} <small class="text-muted">(50)</small>
+								                              </a>
+
+
                                     <div class="collapse show" id="sub-men1" data-parent="#list-group-men">
                                         <div class="list-group">
-                                            <a href="#" class="list-group-item list-group-item-action active">T-Shirts <small class="text-muted">(50)</small></a>
-                                            <a href="#" class="list-group-item list-group-item-action">Polo T-Shirts <small class="text-muted">(10)</small></a>
-                                            <a href="#" class="list-group-item list-group-item-action">Round Neck T-Shirts <small class="text-muted">(10)</small></a>
-                                            <a href="#" class="list-group-item list-group-item-action">V Neck T-Shirts <small class="text-muted">(10)</small></a>
-                                            <a href="#" class="list-group-item list-group-item-action">Hooded T-Shirts <small class="text-muted">(20)</small></a>
+                                            <a href="#" class="list-group-item list-group-item-action active">sub categorias <small class="text-muted">(5)</small></a>
+
                                         </div>
+
                                     </div>
+
                                 </div>
-                                <div class="list-group-collapse sub-men">
-                                    <a class="list-group-item list-group-item-action" href="#sub-men2" data-toggle="collapse" aria-expanded="false" aria-controls="sub-men2">Footwear
-								<small class="text-muted">(50)</small>
-								</a>
-                                    <div class="collapse" id="sub-men2" data-parent="#list-group-men">
-                                        <div class="list-group">
-                                            <a href="#" class="list-group-item list-group-item-action">Sports Shoes <small class="text-muted">(10)</small></a>
-                                            <a href="#" class="list-group-item list-group-item-action">Sneakers <small class="text-muted">(20)</small></a>
-                                            <a href="#" class="list-group-item list-group-item-action">Formal Shoes <small class="text-muted">(20)</small></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="#" class="list-group-item list-group-item-action"> Men  <small class="text-muted">(150) </small></a>
-                                <a href="#" class="list-group-item list-group-item-action">Accessories <small class="text-muted">(11)</small></a>
-                                <a href="#" class="list-group-item list-group-item-action">Bags <small class="text-muted">(22)</small></a>
+
+
+
                             </div>
+@endforeach
                         </div>
-                        <div class="filter-price-left">
-                            <div class="title-left">
-                                <h3>Price</h3>
-                            </div>
-                            <div class="price-box-slider">
-                                <div id="slider-range"></div>
-                                <p>
-                                    <input type="text" id="amount" readonly style="border:0; color:#fbb714; font-weight:bold;">
-                                    <button class="btn hvr-hover" type="submit">Filter</button>
-                                </p>
-                            </div>
-                        </div>
+
+
                         <div class="filter-brand-left">
                             <div class="title-left">
                                 <h3>Brand</h3>
                             </div>
+
                             <div class="brand-box">
                                 <ul>
+                                  @foreach ($Marks as $Mark)
                                     <li>
                                         <div class="radio radio-danger">
                                             <input name="survey" id="Radios1" value="Yes" type="radio">
-                                            <label for="Radios1"> Supreme </label>
+                                            <label for="Radios1"> {{$Mark->name}} </label>
                                         </div>
                                     </li>
-                                    <li>
-                                        <div class="radio radio-danger">
-                                            <input name="survey" id="Radios2" value="No" type="radio">
-                                            <label for="Radios2"> A Bathing Ape </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="radio radio-danger">
-                                            <input name="survey" id="Radios3" value="declater" type="radio">
-                                            <label for="Radios3"> The Hundreds </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="radio radio-danger">
-                                            <input name="survey" id="Radios4" value="declater" type="radio">
-                                            <label for="Radios4"> Alife </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="radio radio-danger">
-                                            <input name="survey" id="Radios5" value="declater" type="radio">
-                                            <label for="Radios5"> Neighborhood </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="radio radio-danger">
-                                            <input name="survey" id="Radios6" value="declater" type="radio">
-                                            <label for="Radios6"> CLOT </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="radio radio-danger">
-                                            <input name="survey" id="Radios7" value="declater" type="radio">
-                                            <label for="Radios7"> Acapulco Gold </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="radio radio-danger">
-                                            <input name="survey" id="Radios8" value="declater" type="radio">
-                                            <label for="Radios8"> UNDFTD </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="radio radio-danger">
-                                            <input name="survey" id="Radios9" value="declater" type="radio">
-                                            <label for="Radios9"> Mighty Healthy </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="radio radio-danger">
-                                            <input name="survey" id="Radios10" value="declater" type="radio">
-                                            <label for="Radios10"> Fiberops </label>
-                                        </div>
-                                    </li>
+
                                 </ul>
+                                @endforeach
                             </div>
+
                         </div>
 
                     </div>
@@ -244,7 +183,7 @@
                                                   <span class="product-price">${{$Product->price}}</span>
                                                     <p>{{$Product->description}}</p>
                                                     <a class="btn hvr-hover" href="{{url('/products/'.$Product->id)}}">Detail page </a>
-                                                    
+
                                                 </div>
 
                                             </div>
