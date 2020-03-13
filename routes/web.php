@@ -15,8 +15,13 @@ Route::get('/contact', function () {
 Route::get('/faq', function () {
     return view('faq');
 });
+Route::get('/about', function () {
+    return view('about');
+});
 
-
+Route::get('/contact-us', function () {
+    return view('contact-us');
+});
 ########### Marks #############
 Route::get('/adminMarks', 'MarksController@index')->middleware('admin');
 Route::get('/addMark', 'MarksController@create')->middleware('admin');
@@ -36,7 +41,7 @@ Route::get('/deleteCategory/{id}', 'CategoriesController@delete')->middleware('a
 Route::post('/deleteCategory/{id}', 'CategoriesController@destroy')->middleware('admin');
 
 ########### Products #############
-Route::get('/products', 'ProductsController@list');
+Route::get('/products', 'ProductsController@list') -> name('products.list');
 Route::get('/products/{id}', 'ProductsController@show');
 Route::get('/adminProducts', 'ProductsController@index')->middleware('admin');
 Route::get('/addProduct', 'ProductsController@create')->middleware('admin');
@@ -58,14 +63,18 @@ Route::post('/products/{id}', 'CartsController@addProduct');
 Route::get('/cart', 'CartsController@show');
 Route::post('/modifyProductQuantity', 'CartsController@modifyProductQuantity');
 Route::post('/removeProduct', 'CartsController@removeProduct');
-Route::post('/checkout', 'CartsController@checkout');
+// Route::post('/checkout', 'CartsController@checkout');
+Route::post('/checkout', 'CheckoutController@checkout');
+Route::get('/checkout', 'CheckoutController@show');
+
+
 
 ########### Admin #############
 Route::get('/adminLogIn', 'AdminsController@logInForm')->middleware('adminLogged');
-Route::post('/adminLogIn', 'AdminsController@logIn')->middleware('adminLogged');  
+Route::post('/adminLogIn', 'AdminsController@logIn')->middleware('adminLogged');
 Route::get('/adminLogOut', 'AdminsController@logOut')->middleware('admin');
 
-Route::get('/check', 'AdminsController@check');  
+Route::get('/check', 'AdminsController@check');
 
 Auth::routes();
 

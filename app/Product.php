@@ -10,7 +10,8 @@ class Product extends Model
     public $timestamps = false;
     public $guarded = [];
 
-    public function category(){
+    // public function category(){
+    public function categories(){
         return $this->belongsTo('App\Category', 'category_id');
     }
 

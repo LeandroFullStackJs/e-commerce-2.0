@@ -16,6 +16,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
+
         $Products = Product::all();
         return view('adminProducts', compact('Products'));
     }
@@ -40,15 +41,15 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, 
+        $this->validate($request,
             [
-                'name' => 'required|min:3|max:100|unique:products', 
-                'price' => 'required|numeric|min:1', 
-                'stock' => 'required|numeric|min:0', 
-                'description' => 'required|min:15', 
-                'image' => 'required|mimes:jpg,jpeg,png,svg,gif', 
-                'category_id' => 'required', 
-                'mark_id' => 'required' 
+                'name' => 'required|min:3|max:100|unique:products',
+                'price' => 'required|numeric|min:1',
+                'stock' => 'required|numeric|min:0',
+                'description' => 'required|min:15',
+                'image' => 'required|mimes:jpg,jpeg,png,svg,gif',
+                'category_id' => 'required',
+                'mark_id' => 'required'
             ],
 
             [
@@ -126,15 +127,15 @@ class ProductsController extends Controller
     {
         $Product = Product::find($id);
 
-        $this->validate($request, 
+        $this->validate($request,
             [
                 'name' => 'required|min:3|max:100|unique:products,name,'.$Product->id,
-                'price' => 'required|numeric|min:1', 
-                'stock' => 'required|numeric|min:0', 
-                'description' => 'required|min:15', 
-                'image' => 'mimes:jpg,jpeg,png,svg,gif', 
-                'category_id' => 'required', 
-                'mark_id' => 'required' 
+                'price' => 'required|numeric|min:1',
+                'stock' => 'required|numeric|min:0',
+                'description' => 'required|min:15',
+                'image' => 'mimes:jpg,jpeg,png,svg,gif',
+                'category_id' => 'required',
+                'mark_id' => 'required'
             ],
 
             [
@@ -152,7 +153,7 @@ class ProductsController extends Controller
                 'stock.min' => 'En el campo :attribute deben ingresarse un valor mayor o igual a 0',
             ]
         );
-        
+
         if(isset($request['image'])){
             @unlink(public_path('product_img/') . $Product->image);
             $imageName = time() . '.' . $request['image']->getClientOriginalExtension();
@@ -182,7 +183,7 @@ class ProductsController extends Controller
     public function delete($id)
     {
         $Product = Product::find($id);
-        return view('deleteProduct', compact('Product')); 
+        return view('deleteProduct', compact('Product'));
     }
 
     /**
@@ -201,8 +202,21 @@ class ProductsController extends Controller
 
     public function list() // listar productos para el cliente
     {
-        $Products = Product::all();
-        return view('products', compact('Products'));
+        if (Request()->Category){
+          $Products = Product::with('Categories')->whereHas('Categories',function($query){
+            $query -> where( 'name', request()->Category);
+          })->get();
+           $Categories =Category::all();
+           $Marks =Mark::all();
+        } else{
+          $Products = Product::inRandomOrder()->take(12)->get();
+          $Categories =Category::all();
+          $Marks =Mark::all();
+        }
+
+
+
+        return view('/products', compact('Products' , 'Categories' , 'Marks'));
     }
 
 }
