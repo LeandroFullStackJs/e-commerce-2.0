@@ -60,8 +60,6 @@
                                 </div>
 
 
-                                {{-- <li><a href=""</a>"</li> --}}
-
 
                             </div>
 @endforeach

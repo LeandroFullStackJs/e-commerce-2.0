@@ -16,8 +16,7 @@
         <header>
             <section class='logo-usuario'>
             <article class='logo'>
-                <br>
-                <a href='/'><img src='/img/acba-logo.png' alt=''></a>
+                <a href='/'><img src='/img/logo-dh.PNG' alt=''></a>
             </article>
             <article class='usuario-acciones'>
                 @if(Auth::user() == null)
@@ -44,7 +43,7 @@
             <div class='collapse navbar-collapse' id='navbarSupportedContent'>
                 <ul class='navbar-nav mr-auto'>
                 <li class='nav-item active'>
-                    <a class='nav-link' href='/'>Inicio <span class='sr-only'>(current)</span></a>
+                    <a class='nav-link' href='/'>Home <span class='sr-only'>(current)</span></a>
                 </li>
                 <li class='nav-item'>
                     <a class='nav-link' href='/products'>Productos</a>
@@ -67,8 +66,8 @@
 
                 </ul>
                 <form class='form-inline my-2 my-lg-0'>
-                <input class='form-control mr-sm-2' type='search' placeholder='Busqueda' aria-label='Search'>
-                <button class='btn btn-light btn-outline-success my-2 my-sm-0' type='submit'>Buscar</button>
+                <input class='form-control mr-sm-2' type='search' placeholder='Search' aria-label='Search'>
+                <button class='btn btn-outline-success my-2 my-sm-0' type='submit'>Buscar</button>
                 </form>
             </div>
             </nav>
@@ -87,7 +86,7 @@
 
         <footer>
             <section class="logo">
-            <h1>AↃBA</h1>
+            <h1>DHShop</h1>
             </section>
             <section class="footer-nav">
             <ul>
@@ -97,8 +96,9 @@
                 <li><a href="faq">Ayuda</a></li>
             </ul>
             </section>
-            <br><br>
         </footer>
+
+
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
         </script>
