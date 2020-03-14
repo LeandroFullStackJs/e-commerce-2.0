@@ -41,6 +41,9 @@ Route::get('/deleteCategory/{id}', 'CategoriesController@delete')->middleware('a
 Route::post('/deleteCategory/{id}', 'CategoriesController@destroy')->middleware('admin');
 
 ########### Products #############
+Route::get('/addImages/{id}', 'ProductsController@addImages')->middleware('admin');
+Route::post('/addImages/{id}', 'ProductsController@addImages')->middleware('admin');
+Route::get('/delete-alt-image/{id}','ProductsController@deleteAltImage')->middleware('admin');
 Route::get('/products', 'ProductsController@list') -> name('products.list');
 Route::get('/products/{id}', 'ProductsController@show');
 Route::get('/adminProducts', 'ProductsController@index')->middleware('admin');

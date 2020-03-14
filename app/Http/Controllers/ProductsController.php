@@ -3,9 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use RealRashid\SweetAlert\Facades\Alert;
+use Image;
 use App\Product;
 use App\Category;
 use App\Mark;
+use App\ProductsImages;
+use DB;
+
+
 
 class ProductsController extends Controller
 {
@@ -98,8 +105,12 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        $Product = Product::find($id);
-        return view('product-detail', compact('Product'));
+      $Product = Product::find($id);
+      $ProductsAltImages = ProductsImages::where('product_id',$id)->get();
+      return view('product-detail', compact('Product','ProductsAltImages'));
+
+
+
     }
 
     /**
@@ -199,24 +210,76 @@ class ProductsController extends Controller
         $Product->delete();
         return redirect('/adminProducts');
     }
+    public function deleteAltImage($id=null){
+       $productImage = ProductsImages::where(['id'=>$id])->first();
+
+       $image_path = 'product_img/';
+       if(file_exists($image_path.$productImage->image)){
+           unlink($image_path.$productImage->image);
+       }
+       ProductsImages::where(['id'=>$id])->delete();
+       Alert::success('Deleted','Success Message');
+       return redirect()->back();
+   }
 
     public function list() // listar productos para el cliente
     {
-        if (Request()->Category){
-          $Products = Product::with('Categories')->whereHas('Categories',function($query){
+        $pagination = 4;
+        $Categories = Category::all();
+        if (request()->Category){
+          $Products = Product::with('category')->whereHas('category',function($query){
             $query -> where( 'name', request()->Category);
-          })->get();
-           $Categories =Category::all();
+          });
            $Marks =Mark::all();
+           $CategoryName = $Categories->where('name',request()->Category)->first()->name;
         } else{
-          $Products = Product::inRandomOrder()->take(12)->get();
-          $Categories =Category::all();
+          $Products = Product::take(12);
           $Marks =Mark::all();
+          $CategoryName ='Featured';
         }
 
+         if(request()->sort == 'low_high'){
+             $Products= $Products -> orderBy('price')->paginate($pagination);
+             // $Products->values()->all();
+         }
+       else if(request()->sort == 'high_low' ){
+         $Products= $Products -> orderBy('price','desc')->paginate($pagination);
+         // $Products->values()->all();
+} else{
+    $Products = $Products -> paginate($pagination);
+}
 
 
-        return view('/products', compact('Products' , 'Categories' , 'Marks'));
+        return view('/products', compact('Products' , 'Categories' , 'Marks','CategoryName'));
     }
+
+public function addImages (Request $request,$id=null){
+  $ProductDetails = Product::where(['id' => $id])->first();
+  if ($request->isMethod('post')) {
+    $data = $request ->all();
+    if($request->hasfile('image')){
+      $files = $request ->file('image');
+      foreach ($files as $file) {
+        $image = new ProductsImages;
+        $extension = $file ->getClientOriginalExtension();
+        $filename = rand(111,9999).'.'.$extension;
+        $image_path = (public_path('product_img/') . $filename);
+        Image::make($file)->save($image_path);
+        $image->image = $filename;
+        $image->product_id = $data['product_id'];
+        $image->save();
+      }
+    }
+    return redirect('addImages/'.$id)->with('flash_message_success','Se agrego la imagen ');
+  }
+  $productImages = ProductsImages::where(['product_id'=>$id])->get();
+  return view ('addImages')->with(compact('ProductDetails','productImages'));
+}
+
+// public function products($id=null){
+//   $productsAltImages = ProductsImages::where('product_id',$id)->get();
+//   return view('/product-detail')->with(compact('productDetails','ProductsAltImages'));
+// }
+
 
 }

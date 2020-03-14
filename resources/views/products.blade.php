@@ -40,6 +40,7 @@
                         <div class="filter-sidebar-left">
 
 @foreach ($Categories as $Category)
+
                             <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men" data-children=".sub-men">
 
 
@@ -49,16 +50,18 @@
 								                              </a>
 
 
-                                    <div class="collapse show" id="sub-men1" data-parent="#list-group-men">
+                                    {{-- <div class="collapse show" id="sub-men1" data-parent="#list-group-men">
                                         <div class="list-group">
                                             <a href="#" class="list-group-item list-group-item-action ">sub categoria <small class="text-muted">(5)</small></a>
 
                                         </div>
 
-                                    </div>
+                                    </div> --}}
 
                                 </div>
 
+
+                                {{-- <li><a href=""</a>"</li> --}}
 
 
                             </div>
@@ -93,17 +96,14 @@
                     <div class="right-product-box">
                         <div class="product-item-filter row">
                             <div class="col-12 col-sm-8 text-center text-sm-left">
-                                <div class="toolbar-sorter-right">
-                                    <span>Sort by </span>
-                                    <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
-									<option data-display="Select">Nothing</option>
-									<option value="1">Popularity</option>
-									<option value="2">High Price → High Price</option>
-									<option value="3">Low Price → High Price</option>
-									<option value="4">Best Selling</option>
-								</select>
-                                </div>
-                                <p>Showing all 4 results</p>
+
+                                    <strong>Price </strong>
+									<a href="{{route ('products.list',['Category'=>request()->Category, 'sort' => 'low_high'])}}"> Low Price → High Price &nbsp &nbsp </a>
+
+									<a href="{{route ('products.list',['Category'=>request()->Category, 'sort' => 'high_low'])}}">High Price → Low Price</a>
+
+
+
                             </div>
                             <div class="col-12 col-sm-4 text-center text-sm-right">
                                 <ul class="nav nav-tabs ml-auto">
@@ -121,8 +121,11 @@
 
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
+
+                                    <h1 align="center">{{$CategoryName}}</h1>
+
                                     <div class="row">
-                                      @foreach ($Products as $Product)
+                                      @forelse ($Products as $Product)
                                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
                                         <a href="products/{{$Product->id}}" class="product">
                                             <div class="products-single fix">
@@ -147,17 +150,24 @@
                                             </div>
                                             </a>
                                         </div>
+                                      @empty
+                                        <div style="text-align: left">No items found</div>
 
 
+                                      @endforelse
 
-                                           @endforeach
+
                                     </div>
+                                      <div class="spacer"></div>
+                                    {{-- {{$Products->links()}} --}}
+                                    {{$Products->appends(request()->input())->links()}}
                                 </div>
 
                                 <div role="tabpanel" class="tab-pane fade" id="list-view">
                                     <div class="list-view-box">
+                                      <h1 align="center">{{$CategoryName}}</h1>
                                         <div class="row">
-                                          @foreach ($Products as $Product)
+                                          @forelse ($Products as $Product)
                                             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
                                               <a href="products/{{$Product->id}}" class="product">
                                                 <div class="products-single fix">
@@ -187,9 +197,18 @@
                                                 </div>
 
                                             </div>
-                                          @endforeach
-                                        </div>
+                                          @empty
+                                            <div style="text-align: left">No items found</div>
 
+                                          @endforelse
+
+
+                                        </div>
+                                        <div class="spacer"></div>
+
+                                        </div>
+                                        {{-- {{$Products->links()}} --}}
+                                        {{$Products->appends(request()->input())->links()}}
                                     </div>
 
                                         </div>

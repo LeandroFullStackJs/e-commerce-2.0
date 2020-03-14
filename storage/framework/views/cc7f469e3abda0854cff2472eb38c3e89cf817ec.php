@@ -40,10 +40,11 @@
 
  <?php echo $__env->make('layouts.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
  <?php echo $__env->yieldContent('content'); ?>
+ <?php echo $__env->make('sweetalert::alert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
  <?php echo $__env->make('layouts.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 
-    
+
 
     <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
 
@@ -65,4 +66,5 @@
     <script src="<?php echo e(asset('front_assets/js/custom.js')); ?>"></script>
 </body>
 
-</html><?php /**PATH C:\Users\Principal\Desktop\Nueva carpeta (10)\ecommerce-acba-master\resources\views/layouts/master.blade.php ENDPATH**/ ?>
+</html>
+<?php /**PATH C:\Users\Principal\Desktop\Nueva carpeta (10)\ecommerce-acba-master\resources\views/layouts/master.blade.php ENDPATH**/ ?>

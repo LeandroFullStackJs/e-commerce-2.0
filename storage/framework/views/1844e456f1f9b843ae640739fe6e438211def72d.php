@@ -11,7 +11,7 @@
                                     <i class="fab fa-opencart"></i> 10% de descuento amego
                                 </li>
                                 <li>
-                                    <i class="fab fa-opencart"></i> pero te cobramos un 30% mas 
+                                    <i class="fab fa-opencart"></i> pero te cobramos un 30% mas
                                 </li>
                             </ul>
                         </div>
@@ -20,17 +20,17 @@
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="custom-select-box">
                         <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
-	
+
 						<option>$ USD</option>
                         <option>$ Pesos</option>
-						
+
 					</select>
                     </div>
                     <div class="right-phone-box">
                         <p>Llamanos :- <a href="#"> +11 900 800 100</a></p>
                     </div>
-                    
-            
+
+
             </section>
                     <div class="our-link">
                         <ul>
@@ -41,12 +41,12 @@
                 <li> <a href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         Cerrar sesión
                     </a> </li>
-            
+
                     <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
                         <?php echo csrf_field(); ?>
                     </form>
                 <?php endif; ?>
-                            <li><a href="/my-account">Mi usuario</a></li>
+                            <li><a href="/profile">Mi usuario</a></li>
                             <li><a href="/contact-us"> Contactanos </a></li>
                         </ul>
                     </div>
@@ -81,7 +81,7 @@
                                 <li>
                                     <div class="row">
                                         <div class="col-menu col-md-3">
-                                            <h6 class="title">Top</h6>
+                                            <a href="/products" class="title">Top</a>
                                             <div class="content">
                                                 <ul class="menu-col">
                                                     <li><a href="/shop">Jackets</a></li>
@@ -93,7 +93,7 @@
                                         </div>
                                         <!-- end col-3 -->
                                         <div class="col-menu col-md-3">
-                                            <h6 class="title">Bottom</h6>
+                                            <a href="/products" class="title">Bottom</a>
                                             <div class="content">
                                                 <ul class="menu-col">
                                                     <li><a href="/shop">Swimwear</a></li>
@@ -105,7 +105,7 @@
                                         </div>
                                         <!-- end col-3 -->
                                         <div class="col-menu col-md-3">
-                                            <h6 class="title">Clothing</h6>
+                                            <a href="/products" class="title">Clothing</a>
                                             <div class="content">
                                                 <ul class="menu-col">
                                                     <li><a href="/shop">Top Wear</a></li>
@@ -116,7 +116,7 @@
                                             </div>
                                         </div>
                                         <div class="col-menu col-md-3">
-                                            <h6 class="title">Accessories</h6>
+                                            <a href="/products" class="title">Accessories</a>
                                             <div class="content">
                                                 <ul class="menu-col">
                                                     <li><a href="/shop">Bags</a></li>
@@ -137,9 +137,7 @@
                             <ul class="dropdown-menu">
                                 <li><a href="/cart">Cart</a></li>
                                 <li><a href="/checkout">Checkout</a></li>
-                                <li><a href="/my-account">My Account</a></li>
-                                <li><a href="/wishlist">Wishlist</a></li>
-                                <li><a href="/shop-detail">Shop Detail</a></li>
+                                <li><a href="/profile">My Account</a></li>
                             </ul>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="/contact-us">Contact Us</a></li>
@@ -202,4 +200,5 @@
             </div>
         </div>
     </div>
-    <!-- End Top Search --><?php /**PATH C:\Users\Principal\Desktop\Nueva carpeta (10)\ecommerce-acba-master\resources\views/layouts/header.blade.php ENDPATH**/ ?>
+    <!-- End Top Search -->
+<?php /**PATH C:\Users\Principal\Desktop\Nueva carpeta (10)\ecommerce-acba-master\resources\views/layouts/header.blade.php ENDPATH**/ ?>

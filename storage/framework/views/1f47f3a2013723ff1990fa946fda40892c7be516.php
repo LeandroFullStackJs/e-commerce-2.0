@@ -1,9 +1,9 @@
-<?php $__env->startSection('title', 'Administrador de productos'); ?>
+<?php $__env->startSection('title', 'DHShop - adminProducts'); ?>
 
 <?php $__env->startSection('main'); ?>
     <h1>Panel de administración de productos</h1>
 
-    <a href="admin" class="btn btn-outline-secondary m-3">Volver al panel</a>
+    <a href="admin" class="btn btn-outline-secondary m-3">Volver a principal</a>
 
     <table class="table table-stripped table-bordered table-hover">
         <thead class="thead-dark">
@@ -17,14 +17,14 @@
                 <th>Marca</th>
                 <th>Categoría</th>
                 <th colspan="2">
-                <a href="addProduct" class="btn btn-light">
-                    Agregar nuevo producto
+                <a href="addProduct" class="btn btn-dark">
+                    agregar
                 </a>
                 </th>
             </tr>
         </thead>
     <tbody>
-        
+
         <?php $__currentLoopData = $Products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
             <tr>
@@ -36,14 +36,18 @@
                 <td><img class="img-fluid img-thumbnail main-image" src="product_img/<?php echo e($Product->image); ?>" alt=""></td>
                 <td><?php echo e($Product->mark->name); ?></td>
                 <td><?php echo e($Product->category->name); ?></td>
-                <td><a href="editProduct/<?php echo e($Product->id); ?>" class="btn btn-outline-secondary">Modificar</a></td>
-                <td><a href="deleteProduct/<?php echo e($Product->id); ?>" class="btn btn-outline-secondary">Eliminar</a></td>
+                <td><a href="editProduct/<?php echo e($Product->id); ?>" class="btn btn-outline-secondary">modificar</a></td>
+                <td><a href="deleteProduct/<?php echo e($Product->id); ?>" class="btn btn-outline-secondary">eliminar</a></td>
+                <td><a href="addImages/<?php echo e($Product->id); ?>" class="btn btn-outline-secondary"> Imagenes</a></td>
             </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+
 
     </tbody>
     </table>
 
-    <a href="admin" class="btn btn-outline-secondary m-3">Volver al panel</a>
+    <a href="admin" class="btn btn-outline-secondary m-3">Volver a principal</a>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('layouts.template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Principal\Desktop\Nueva carpeta (10)\ecommerce-acba-master\resources\views/adminProducts.blade.php ENDPATH**/ ?>

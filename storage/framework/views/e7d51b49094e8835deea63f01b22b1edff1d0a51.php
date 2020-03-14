@@ -59,4 +59,5 @@
         <p class="footer-company">All Rights Reserved. &copy; 2020 <a href="#">ThewayShop</a> Design By :
             <a href="https://www.linkedin.com/in/leandro-ezequiel-acu%C3%B1a-672594141/">LEANDRO</a></p>
     </div>
-    <!-- End copyright  --><?php /**PATH C:\Users\Principal\Desktop\Nueva carpeta (10)\ecommerce-acba-master\resources\views/layouts/footer.blade.php ENDPATH**/ ?>
+    <!-- End copyright  -->
+<?php /**PATH C:\Users\Principal\Desktop\Nueva carpeta (10)\ecommerce-acba-master\resources\views/layouts/footer.blade.php ENDPATH**/ ?>

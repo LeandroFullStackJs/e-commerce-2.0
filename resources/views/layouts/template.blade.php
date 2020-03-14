@@ -12,6 +12,7 @@
     </head>
 
     <body>
+      @include('sweetalert::alert')
     
         <header>
             <section class='logo-usuario'>
@@ -20,13 +21,13 @@
             </article>
             <article class='usuario-acciones'>
                 @if(Auth::user() == null)
-                    <a href='/register' id='registrarme'>Crear cuenta</a> 
+                    <a href='/register' id='registrarme'>Crear cuenta</a>
                     <a href='/login' id='ingresar'>Ingresar</a>
                 @else
                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         Cerrar sesión
                     </a>
-            
+
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
@@ -39,7 +40,7 @@
                 aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
                 <span class='navbar-toggler-icon'></span>
             </button>
-        
+
             <div class='collapse navbar-collapse' id='navbarSupportedContent'>
                 <ul class='navbar-nav mr-auto'>
                 <li class='nav-item active'>
@@ -107,5 +108,5 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
         </script>
     </body>
-  
+
 </html>
